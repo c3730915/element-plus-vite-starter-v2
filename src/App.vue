@@ -1,23 +1,26 @@
 <template>
   <el-config-provider namespace="ep">
-    <BaseHeader />
-    <div class="flex main-container">
-      <BaseSide />
-      <div w="full" py="4">
-        <Logos my="4" />
-        <HelloWorld msg="Hello Vue 3 + Element Plus + Vite" />
+    <div class="common-layout" >
+      <div class="clock" style="background-color: #42b8dd">
+        <TimeClock/>
       </div>
+
     </div>
   </el-config-provider>
 </template>
 
 <style>
-#app {
-  text-align: center;
-  color: var(--ep-text-color-primary);
+
+
+.common-layout{
+  width: 95%;
+}
+.clock{
+  margin-left: 5%;
 }
 
-.main-container {
-  height: calc(100vh - var(--ep-menu-item-height) - 3px);
-}
 </style>
+
+<script>
+
+</script>
