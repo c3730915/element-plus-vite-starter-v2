@@ -2,9 +2,9 @@
 <!--  <button @click="add_date">hide or show seconds</button>-->
 <!--  <Countdown v-bind="flip_config" :dateReverse="true" :show-seconds="isShowSeconds"></Countdown>-->
 
-  <el-row justify="center" :gutter="10" style="height: 80%">
+  <el-row justify="center" :gutter="10">
     <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
-        <el-card class="box-card">
+        <el-card class="box-card" >
           <template #header>
             <el-alert
                 title="日期统计"
@@ -80,9 +80,8 @@ onMounted(() =>{
 
 .el-footer {
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
-
+  flex-flow: column nowrap;
+  justify-content: flex-end;
 }
 
 
@@ -101,6 +100,7 @@ onMounted(() =>{
 
 .box-card {
   /*width: 40vh;*/
+  height: 80vh;
 }
 .el-tag{
   float: right;

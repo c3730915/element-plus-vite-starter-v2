@@ -1,7 +1,7 @@
 <template>
   <el-config-provider namespace="ep">
     <div class="common-layout" >
-      <div class="clock" style="background-color: #42b8dd">
+      <div class="clock">
         <TimeClock/>
       </div>
 
@@ -17,6 +17,9 @@
 }
 .clock{
   margin-left: 5%;
+  margin-top: 10vh;
+  min-height: 80vh;
+  background-color: #42b8dd;
 }
 
 </style>

@@ -4,7 +4,7 @@ import { toggleDark } from "~/composables";
 
 <template>
 <!--  <el-button @click="getTableData"> get table data</el-button>-->
-  <div >
+  <div class="footer">
     <button
         class="border-none w-full bg-transparent cursor-pointer"
         style="height: var(--ep-menu-item-height)"
@@ -16,3 +16,10 @@ import { toggleDark } from "~/composables";
 
   </div>
 </template>
+<style>
+.footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
