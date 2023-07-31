@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { toggleDark } from "~/composables";
+import { toggleDark,isDark } from "~/composables";
 </script>
 
 <template>
@@ -11,15 +11,13 @@ import { toggleDark } from "~/composables";
         @click="toggleDark()"
     >
       <i inline-flex i="dark:ep-moon ep-sunny" />
-      switch mode
+      {{isDark?'light mode':'night mode'}}
     </button>
 
   </div>
 </template>
 <style>
 .footer{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
 }
 </style>

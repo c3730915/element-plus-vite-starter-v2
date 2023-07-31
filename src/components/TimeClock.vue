@@ -1,6 +1,6 @@
 <template>
-<!--  <button @click="add_date">hide or show seconds</button>-->
-<!--  <Countdown v-bind="flip_config" :dateReverse="true" :show-seconds="isShowSeconds"></Countdown>-->
+<div class="parent">
+
 
   <el-row justify="center" :gutter="10">
     <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
@@ -9,7 +9,6 @@
             <el-alert
                 title="日期统计"
                 type="info"
-                effect="dark"
                 description="统计一些重要的日期，倒计时"
                 show-icon
                 :closable=false
@@ -22,11 +21,13 @@
               {{o.day_count}}天</el-tag>
             <el-divider style="margin-top: 10px" />
           </div>
+
           <BaseHeader class="el-footer"/>
         </el-card>
     </el-col>
   </el-row>
 
+</div>
 
 </template>
 
@@ -78,10 +79,21 @@ onMounted(() =>{
 
 <style>
 
-.el-footer {
+.parent{
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-end;
+  flex-direction: column;
+  /* Optional: If you want to set a maximum width for the centered div */
+  /* Optional: To center horizontally */
+  margin: 0 auto;
+  /* Optional: To set a specific height for the container */
+  height: 100%;
+  /* Optional: To position relative for absolutely positioned children */
+  position: relative;
+}
+.el-footer {
+  margin-top: 20vh;
+  /*margin-top: auto;*/
+
 }
 
 
