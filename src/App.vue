@@ -18,7 +18,7 @@
 .clock{
   margin-left: 5%;
   margin-top: 10vh;
-  min-height: 80vh;
+  /*min-height: 60vh;*/
 }
 
 </style>

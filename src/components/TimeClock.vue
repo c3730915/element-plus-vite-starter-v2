@@ -32,16 +32,13 @@
 </template>
 
 <script lang="ts" setup>
-import moment from "moment/moment";
-import {computed, onMounted, reactive, ref, watch} from "vue";
-import {BaseResponse, TableData, TableDataResponseData} from "~/api/table/types";
+import {onBeforeMount, onMounted, ref,} from "vue";
 import {getTableListApi} from "~/api/table";
-import { get } from "lodash";
 import {ElMessage} from "element-plus";
+import {event_list, EventRecord, EventRecordList, RecordEventResponse} from "~/api/table/ResponseType";
 
-type Records = TableData[]
 
-let table_data= ref<Records>([])
+let table_data= ref<event_list>([])
 
 const getLabelTypeByImportance =  (importance:number) =>{
   if (importance === 1){
@@ -57,19 +54,16 @@ const getLabelTypeByImportance =  (importance:number) =>{
 
 const getTableData = async () => {
 
-
-  let res: TableDataResponseData = await getTableListApi();
-
+  let res: RecordEventResponse = await getTableListApi();
 
   if (res) {
-    table_data.value.splice(0)
-   res.object.list.forEach(a => table_data.value.push(a))
-
+    table_data.value = res.object.list
     console.log(table_data.value)
-    // ElMessage.success("update info success:" + table_data.size)
+    ElMessage.success("request success!")
+
   }
 }
-onMounted(() =>{
+onBeforeMount(() =>{
   getTableData()
 })
 
@@ -79,40 +73,28 @@ onMounted(() =>{
 
 <style>
 
-.parent{
-  display: flex;
-  flex-direction: column;
-  /* Optional: If you want to set a maximum width for the centered div */
-  /* Optional: To center horizontally */
-  margin: 0 auto;
-  /* Optional: To set a specific height for the container */
-  height: 100%;
-  /* Optional: To position relative for absolutely positioned children */
-  position: relative;
-}
+
 .el-footer {
-  margin-top: 20vh;
-  /*margin-top: auto;*/
-
+/*margin-bottom: auto;*/
+/*  justify-content: flex-end;*/
+/*  align-items:flex-end;*/
+  align-self:flex-end;
 }
 
 
-.grid-content {
-  border-radius: 4px;
-  min-height: 36px;
-}
 .text {
   font-size: 14px;
 }
 
 .item {
   padding: 18px 0;
-
 }
 
 .box-card {
   /*width: 40vh;*/
-  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
 }
 .el-tag{
   float: right;
