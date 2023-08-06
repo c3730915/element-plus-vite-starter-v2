@@ -34,7 +34,7 @@
 
   <el-row justify="center" style="margin-top: 10vw">
     <BaseHeader class=""/>
-    <el-button  icon="Refresh" type="success" plain :loading="loading" @click="getTableData"  size="small" style="margin-left: 10vw">Refresh</el-button>
+    <el-button  icon="Refresh" type="success" plain :loading="loading" @click="getTableData"  size="small" style="margin-left: 10vw">{{loading?'Loading...':'Refresh'}}</el-button>
   </el-row>
 
 
