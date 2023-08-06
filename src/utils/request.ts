@@ -6,7 +6,7 @@ import { ElMessage } from 'element-plus'
 const request = axios.create({
   //基础路径
   baseURL: import.meta.env.VITE_APP_BASE_API, //基础路径上会携带/api
-  timeout: 5000, //超时的时间的设置
+  timeout: 15000, //超时的时间的设置
 })
 //第二步:request实例添加请求与响应拦截器
 request.interceptors.request.use((config) => {
@@ -32,6 +32,7 @@ request.interceptors.response.use(
     //定义一个变量:存储网络错误信息
     let message = ''
     //http状态码
+    // console.log(error.response)
     const status = error.response.status
     switch (status) {
       case 401:

@@ -12,7 +12,13 @@
                 description="统计一些重要的日期，倒计时"
                 show-icon
                 :closable=false
-            />
+            >
+              <template #default style="display: flex;flex-direction: row;">
+                统计一些重要的日期，倒计时
+                <el-button  @click="getTableData" type="success" size="small" style="display: block;margin-left: 45vw">refresh</el-button>
+              </template>
+            </el-alert>
+
           </template>
           <div v-for="o in table_data" :key="o" class="text item" style="text-align: left">距离{{o.title}} 已经过去了
             <el-tag class="ml-2 el-tag" size="default" round
@@ -21,7 +27,6 @@
               {{o.day_count}}天</el-tag>
             <el-divider style="margin-top: 10px" />
           </div>
-
           <BaseHeader class="el-footer"/>
         </el-card>
     </el-col>
