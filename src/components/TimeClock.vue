@@ -92,8 +92,6 @@ onBeforeMount(() =>{
 
 .box-card {
   /*width: 40vh;*/
-  display: flex;
-  flex-direction: column;
   height: 70vh;
 }
 .el-tag{
