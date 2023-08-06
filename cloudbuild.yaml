@@ -1,19 +1,19 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/translate-379505/vue3-element/vue3-element-image', '.']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/translate-379505/vue3-element/vue3-event-record-image', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/translate-379505/vue3-element/vue3-element-image']
+    args: ['push', 'us-central1-docker.pkg.dev/translate-379505/vue3-element/vue3-event-record-image']
 
   # Deploy container image to Cloud Run
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: gcloud
-    args:
-      - 'run'
-      - 'deploy'
-      - 'vue3-element-image'
-      - '--image'
-      - 'us-central1-docker.pkg.dev/translate-379505/vue3-element/vue3-element-image'
-      - '--region'
-      - 'asia-northeast2'
+#  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+#    entrypoint: gcloud
+#    args:
+#      - 'run'
+#      - 'deploy'
+#      - 'vue3-event-record-image'
+#      - '--image'
+#      - 'us-central1-docker.pkg.dev/translate-379505/vue3-element/vue3-event-record-image'
+#      - '--region'
+#      - 'asia-northeast2'
 images:
-  ['us-central1-docker.pkg.dev/translate-379505/vue3-element/vue3-element-image']
+  ['us-central1-docker.pkg.dev/translate-379505/vue3-element/vue3-event-record-image']
