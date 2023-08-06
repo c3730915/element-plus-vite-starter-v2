@@ -15,7 +15,6 @@
             >
               <template #default style="display: flex;flex-direction: row;">
                 统计一些重要的日期，倒计时
-                <el-button  @click="getTableData" type="success" size="small" style="display: block;margin-left: 45vw">refresh</el-button>
               </template>
             </el-alert>
 
@@ -27,7 +26,14 @@
               {{o.day_count}}天</el-tag>
             <el-divider style="margin-top: 10px" />
           </div>
-          <BaseHeader class="el-footer"/>
+          <div style="display: flex;flex-direction: row;justify-content: center">
+            <div>
+              <BaseHeader class="el-footer"/>
+            </div>
+            <div>
+              <el-tag class="ml-2" type="success"><el-icon><Refresh /></el-icon> refresh</el-tag>
+            </div>
+          </div>
         </el-card>
     </el-col>
   </el-row>
@@ -41,6 +47,8 @@ import {onBeforeMount, onMounted, ref,} from "vue";
 import {getTableListApi} from "~/api/table";
 import {ElMessage} from "element-plus";
 import {event_list, EventRecord, EventRecordList, RecordEventResponse} from "~/api/table/ResponseType";
+import { isDark } from '~/composables/dark'
+import {Refresh} from "@element-plus/icons-vue";
 
 
 let table_data= ref<event_list>([])
