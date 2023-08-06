@@ -1,6 +1,8 @@
 <template>
 <div class="parent">
 
+  <el-row justify="center" :gutter="10">
+  </el-row>
 
   <el-row justify="center" :gutter="10">
     <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
@@ -26,17 +28,15 @@
               {{o.day_count}}天</el-tag>
             <el-divider style="margin-top: 10px" />
           </div>
-          <div style="display: flex;flex-direction: row;justify-content: center">
-            <div>
-              <BaseHeader class="el-footer"/>
-            </div>
-            <div>
-              <el-tag class="ml-2" type="success"><el-icon><Refresh /></el-icon> refresh</el-tag>
-            </div>
-          </div>
         </el-card>
     </el-col>
   </el-row>
+
+  <el-row justify="center" style="margin-top: 10vw">
+    <BaseHeader class=""/>
+    <el-button  icon="Refresh" type="success" plain :loading="loading" @click="getTableData"  size="small" style="margin-left: 10vw">Refresh</el-button>
+  </el-row>
+
 
 </div>
 
@@ -48,7 +48,6 @@ import {getTableListApi} from "~/api/table";
 import {ElMessage} from "element-plus";
 import {event_list, EventRecord, EventRecordList, RecordEventResponse} from "~/api/table/ResponseType";
 import { isDark } from '~/composables/dark'
-import {Refresh} from "@element-plus/icons-vue";
 
 
 let table_data= ref<event_list>([])
@@ -64,17 +63,19 @@ const getLabelTypeByImportance =  (importance:number) =>{
   }
 
 }
+let loading = ref(false)
 
 const getTableData = async () => {
 
+  loading.value = true;
   let res: RecordEventResponse = await getTableListApi();
 
   if (res) {
     table_data.value = res.object.list
     console.log(table_data.value)
     ElMessage.success("request success!")
-
   }
+  loading.value = false;
 }
 onBeforeMount(() =>{
   getTableData()
@@ -85,14 +86,6 @@ onBeforeMount(() =>{
 </script>
 
 <style>
-
-
-.el-footer {
-/*margin-bottom: auto;*/
-/*  justify-content: flex-end;*/
-/*  align-items:flex-end;*/
-  align-self:flex-end;
-}
 
 
 .text {
