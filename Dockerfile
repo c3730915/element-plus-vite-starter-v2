@@ -30,11 +30,13 @@ RUN echo "Delete node_modules folder";
 RUN rm -rf node_modules
 RUN echo "START COPY";
 RUN echo "app dist files:" && cd /app/dist/ && echo $(ls)
-RUN cp -rf  /app/dist/. /usr/share/nginx/html/
+
+RUN cd /app/dist && cp -rf . /usr/share/nginx/html/
 RUN echo "END COPY";
 RUN cd /usr/share/nginx/html/;
 RUN echo "html dictionary files:"
 RUN echo $(ls)
 
-CMD ["nginx -g 'daemon off;'"]
+CMD ["/bin/bash", "-c", "/app/start.sh && nginx -g 'daemon off;'"]
+
 
